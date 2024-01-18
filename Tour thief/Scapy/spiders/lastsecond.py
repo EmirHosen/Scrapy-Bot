@@ -5,27 +5,14 @@ import random
 class LastsecondSpider(scrapy.Spider):
     name = "lastsecond"
     start_urls=["https://lastsecond.ir/tours/%D8%AA%D9%88%D8%B1-%D8%AA%D8%B1%DA%A9%DB%8C%D9%87"]
-    titles = []
-    stays = []
-    agencies = []
-    starts = []
-    ends = []
+# Insert List for Save Prices 
     prices = []
 
     def parse(self, response):
         for item in response.css("div.tour-list-item__upper"):
-            title = item.css("h2.title::text").getall()
-            stay = item.css("div.stay::text").getall()
-            agency = item.css("div.agency::text").getall()
-            start = item.css("span.airline__name::text").getall()
-            end = item.css("span.airline__name::text").getall()
+
             price = item.css("span.price__item__value::text").getall()
 
-            self.titles.extend(title)
-            self.stays.extend(stay)
-            self.agencies.extend(agency)
-            self.starts.extend(start)
-            self.ends.extend(end)
             self.prices.extend(price)
 
         class Node:
@@ -91,8 +78,6 @@ class LastsecondSpider(scrapy.Spider):
         treap = Treap()
         for price in self.prices:
             treap.insert(price)
-        for title in self.titles:
-            treap.insert(title)
         inorder_result = treap.inorder()
         print(inorder_result)
 
