@@ -1,6 +1,7 @@
 #import Laibrary 
 import scrapy
 import random
+import pandas as pd
 #Start Spider 
 class LastsecondSpider(scrapy.Spider):
     name = "lastsecond"
@@ -80,6 +81,11 @@ class LastsecondSpider(scrapy.Spider):
             treap.insert(price)
         inorder_result = treap.inorder()
         print(inorder_result)
+
+        inorder_result = treap.inorder()
+        df = pd.DataFrame({'Prices': inorder_result})
+        df.to_excel('Prices.xlsx', index=False)
+
 
         next_page = response.css("a.page-link::attr(href)").get()
         if next_page is not None:
