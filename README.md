@@ -6,10 +6,14 @@ In this robot, information is received from the sales site of recreational tours
 ## How Use
 
 Open CMD and run commend : 
-``` python run.py ```
+```
+python run.py
+```
 
 
 ## Output file
 
 The output file will be created in the following path : 
-``` Scrapy Bot\Scrapy-Bot\Tourthief\Scapy\spiders ```
+```
+Scrapy Bot\Scrapy-Bot\Tourthief\Scapy\spiders
+```
